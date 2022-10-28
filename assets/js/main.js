@@ -13,11 +13,8 @@ const {createApp}=Vue
 createApp({
     data(){
         return{
-            error:false,
-            newTask:{
-                text: '',
-                done: false,
-            } ,
+            error: false,
+            newTask: '',
             tasks:[
                 
                 {
@@ -37,6 +34,11 @@ createApp({
     },
     methods: {
         addList(){
+            this.newTask= {
+                text: '',
+                done: false,
+            }
+            console.log(this.newTask)
             console.log(this.newTask.text.length);
             if (this.newTask.text.length < 5){
                 this.error = true
@@ -45,7 +47,10 @@ createApp({
                 this.tasks.unshift(this.newTask);
     
                 //svuotare input dopo aggiunta task
-                this.newTask = "";
+                this.newTask={
+                    text: '',
+                    done: false,
+                } 
             }
         }
     }

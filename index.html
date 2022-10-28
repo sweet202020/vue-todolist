@@ -11,6 +11,10 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/regular.min.js" integrity="sha512-Kcbb5bDGCQQwo67YHS9uDvRmyrNEqHLPA1Kmn0eqrritqGDp3OpkBGvHk36GNEH44MtWM1L5k3i9MSQPMkNIuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
   <!-- link css -->
   <link rel="stylesheet" href="./assets/css/style.css">
 
@@ -26,9 +30,14 @@
             <input type="text" v-model="newTask.text">
             <button @click="addList">add list</button>
             <div v-show="error"> devi inserire una task di almeno 5 caratteri</div>
-            <ul>
-                <li v-for="task in tasks">{{task.text}}</li>
+            
+            
+            <ul v-if="tasks.length!==0">
+                <li v-for="task in tasks">{{task.text}} <i class="fa-sharp fa-solid fa-circle-xmark"></i></li>
+               
             </ul>
+            <p v-else="bravo hai finito le tasks"></p>
+
         </main>
     </div>
 
