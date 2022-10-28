@@ -27,16 +27,19 @@
             <h1 class="text-uppercase text-center my-3">to do list</h1>
         </header>
         <main>
-            <input type="text" v-model="newTask.text">
+            <input type="text" v-model="newTask">
             <button @click="addList">add list</button>
             <div v-show="error"> devi inserire una task di almeno 5 caratteri</div>
             
             
-            <ul v-if="tasks.length!==0">
-                <li v-for="task in tasks">{{task.text}} <i class="fa-sharp fa-solid fa-circle-xmark"></i></li>
+            <ul v-if="tasks.length>0">
+                <li v-for="(task, index) in tasks" :class="task.done === true ? 'done' : ''">
+                    {{task.text}}  
+                    <i @click="removeToDo(index)"class="fa-sharp fa-solid fa-circle-xmark"></i>
+                </li>
                
             </ul>
-            <p v-else="bravo hai finito le tasks"></p>
+            <p v-else>bravo!! hai finito le tasks</p>
 
         </main>
     </div>

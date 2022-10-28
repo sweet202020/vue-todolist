@@ -15,15 +15,19 @@ createApp({
         return{
             error: false,
             newTask: '',
+            /* newTask : {
+                text: '',
+                done: false,
+            }, */
             tasks:[
                 
                 {
                     text: 'Learn Html',
-                    done: true
+                    done: false
                 },
                 {
                     text: 'Learn CSS',
-                    done: true
+                    done: false
                 },
                 {
                     text: 'Learn JavaScript',
@@ -33,25 +37,28 @@ createApp({
         }
     },
     methods: {
+
         addList(){
-            this.newTask= {
-                text: '',
+
+            const newTask={
+                text: this.newTask,
                 done: false,
             }
-            console.log(this.newTask)
-            console.log(this.newTask.text.length);
-            if (this.newTask.text.length < 5){
+            console.log(newTask)
+            if (newTask.text.length < 5){
                 this.error = true
             } else {
                 this.error = false
-                this.tasks.unshift(this.newTask);
+                this.tasks.unshift(newTask);
     
                 //svuotare input dopo aggiunta task
-                this.newTask={
-                    text: '',
-                    done: false,
-                } 
+                this.newTask=''
+                
             }
+        },
+        removeToDo(index){
+            this.tasks.splice(index, 1)
+            console.log(this.tasks.length);
         }
     }
 }).mount('#app')
